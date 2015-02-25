@@ -26,7 +26,7 @@
 
 	// text area
 	$comments = $_POST['comments'];
-	$comments = nl2br($comments, false);
+	$comments = nl2br(htmlspecialchars($comments), false);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

@@ -35,6 +35,11 @@
 
         <h2>Message:</h2>
         <p><?php echo nl2br(htmlspecialchars($message)); ?></p>
+		<br />
+<!-- 		<p>
+			<?php echo $dash . " " . $dash2 . " " . $dash3; ?><br />
+			<?php echo $phone . "\n" . $phone_length ?>
+		</p> -->
 
     </div>
 </body>
