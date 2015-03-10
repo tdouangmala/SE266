@@ -6,7 +6,11 @@ session_set_cookie_params($lifetime, '/');
 session_start();
 
 // Create a cart array if needed
-if (empty($_SESSION['cart13'])) $_SESSION['cart13'] = array();
+if (empty($_SESSION['cart13'])) {
+	$cart = array();
+} else {
+	$cart = $_SESSION['cart13'];
+}
 
 // Create a table of products
 $products = array();
@@ -29,16 +33,20 @@ if (isset($_POST['action'])) {
 // Add or update cart as needed
 switch($action) {
     case 'add':
-        add_item($_POST['productkey'], $_POST['itemqty']);
+		$key = $_POST['productkey'];
+		$quantity = $_POST['itemqty'];
+        douangmala\cart\add_item($cart, $key, $quantity);
+		$_SESSION['cart13'] = $cart;
         include('cart_view.php');
         break;
     case 'update':
         $new_qty_list = $_POST['newqty'];
         foreach($new_qty_list as $key => $qty) {
-            if ($_SESSION['cart13'][$key]['qty'] != $qty) {
-                update_item($key, $qty);
+            if ($cart[$key]['qty'] != $qty) {
+                douangmala\cart\update_item($cart, $key, $qty);
             }
         }
+		$_SESSION['cart13'] = $cart;
         include('cart_view.php');
         break;
     case 'show_cart':
@@ -48,7 +56,8 @@ switch($action) {
         include('add_item_view.php');
         break;
     case 'empty_cart':
-        unset($_SESSION['cart13']);
+		$cart = array();
+		$_SESSION['cart13'] = $cart;
         include('cart_view.php');
         break;
 }
