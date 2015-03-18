@@ -38,9 +38,6 @@
     <!-- part 3: the add form -->
     <h2>Add Task</h2>
     <form action="." method="post" >
-        <?php foreach($task_list as $task) : ?>
-          <input type="hidden" name="tasklist[]" value="<?php echo $task; ?>"/>
-        <?php endforeach; ?>
         <input type="hidden" name="action" value="add"/>
         <label>Task:</label>
         <input type="text" name="newtask" id="newtask" /> <br />
@@ -54,9 +51,6 @@
     <?php if (count($task_list) > 0) : ?>
     <h2>Delete Task</h2>
     <form action="." method="post" >
-        <?php foreach($task_list as $task) : ?>
-          <input type="hidden" name="tasklist[]" value="<?php echo $task; ?>"/>
-        <?php endforeach; ?>
         <input type="hidden" name="action" value="delete"/>
         <label>Task:</label>
         <select name="taskid">

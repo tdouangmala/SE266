@@ -1,6 +1,10 @@
 <?php
-if (isset($_POST['tasklist'])) {
-    $task_list = $_POST['tasklist'];
+$lifetime = 60 * 60 * 24 * 365; // 1 year in seconds
+session_set_cookie_params($lifetime, '/');
+session_start();
+
+if (isset($_SESSION['tasklist'])) {
+    $task_list = $_SESSION['tasklist'];
 } else {
     $task_list = array();
 }
@@ -22,6 +26,8 @@ switch( $_POST['action'] ) {
         $task_list = array_values($task_list);
         break;
 }
+
+$_SESSION['tasklist'] = $task_list;
 
 include('task_list.php');
 ?>

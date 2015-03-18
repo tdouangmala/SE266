@@ -8,6 +8,7 @@
 <body>
     <div id="page">
         <div id="header">
+            <p>Session ID: <?php echo session_id(); ?></p>
             <h1>My Guitar Shop</h1>
         </div>
         <div id="main">
@@ -63,6 +64,7 @@
             <?php endif; ?>
             <p><a href=".?action=show_add_item">Add Item</a></p>
             <p><a href=".?action=empty_cart">Empty Cart</a></p>
+            <p><a href=".?action=end_session">End Session and Delete Cookie</a></p>
 
         </div><!-- end main -->
     </div><!-- end page -->

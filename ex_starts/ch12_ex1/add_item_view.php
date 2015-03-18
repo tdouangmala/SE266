@@ -8,6 +8,7 @@
 <body>
     <div id="page">
         <div id="header">
+            <p>Session ID: <?php echo session_id(); ?></p>
             <h1>My Guitar Shop</h1>
         </div>
         <div id="main">
